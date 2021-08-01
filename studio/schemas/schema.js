@@ -7,6 +7,9 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 //schema import
 import product from "./product";
 import category from "./category";
+import included from "./included";
+import sizedImage from "./sizedImage";
+import imageGroup from "./imageGroup";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -18,5 +21,8 @@ export default createSchema({
     /* Your types here! */
     product,
     category,
+    included,
+    sizedImage,
+    imageGroup,
   ]),
 });
