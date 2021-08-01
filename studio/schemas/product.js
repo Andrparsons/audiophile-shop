@@ -14,6 +14,17 @@ export default {
       title: "Slug",
     },
     {
+      name: "category",
+      title: "Category",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "category" },
+        },
+      ],
+    },
+    {
       name: "new",
       title: "Is this a new product?",
       type: "boolean",
