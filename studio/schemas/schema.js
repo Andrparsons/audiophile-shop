@@ -10,6 +10,7 @@ import category from "./category";
 import included from "./included";
 import sizedImage from "./sizedImage";
 import imageGroup from "./imageGroup";
+import orderedGallery from "./orderedGallery";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,5 +25,6 @@ export default createSchema({
     included,
     sizedImage,
     imageGroup,
+    orderedGallery,
   ]),
 });

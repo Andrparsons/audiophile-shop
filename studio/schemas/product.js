@@ -14,9 +14,9 @@ export default {
       title: "Slug",
     },
     {
-      name: 'productImage',
-      title: 'Product Image',
-      type: 'imageGroup'
+      name: "productImage",
+      title: "Product Image",
+      type: "imageGroup",
     },
     {
       name: "category",
@@ -40,54 +40,38 @@ export default {
       type: "number",
     },
     {
-      name: 'description',
-      title: 'Product Description',
-      type: 'array',
-      of: [{type: 'block'}]
+      name: "description",
+      title: "Product Description",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
-      name: 'features',
-      title: 'Product Features',
-      type: 'array',
-      of: [{type: 'block'}]
+      name: "features",
+      title: "Product Features",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
-      name: 'includes',
-      title: 'Includes the follwing',
-      type: 'array',
-      of: [{type: 'included'}]
+      name: "includes",
+      title: "Includes the following items",
+      type: "array",
+      of: [{ type: "included" }],
     },
     {
-      name: 'gallery',
-      title: 'Image Gallery',
-      type: 'array',
+      name: "gallery",
+      title: "Image Gallery",
+      type: "array",
       of: [
         {
-          type: 'object',
-          fields: [
-            {
-              name: 'order',
-              title: 'Display order',
-              type: 'string'
-            },
-            {
-              name: 'galleryImage',
-              title: 'Gallery Image',
-              type: 'imageGroup',
-            }
-          ]
-        }
-      ]
-
+          type: "orderedGallery",
+        },
+      ],
     },
     {
-      name: 'others',
-      title: 'Other Related items',
-      type: 'array',
-      of: [
-        {type: 'reference', to: [{type: 'product'}]}
-        
-      ]
-    }
+      name: "others",
+      title: "Other Related items",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "product" }] }],
+    },
   ],
 };
