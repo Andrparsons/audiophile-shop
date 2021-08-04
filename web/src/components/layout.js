@@ -26,6 +26,9 @@ const GlobalStyle = createGlobalStyle`
     --white: #ffffff;
 
 
+    //colour intentions
+    --darkBG: var(--almostBlack);
+
     font-family: 'Manrope', sans-serif;
   }
 
@@ -80,6 +83,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 0.9375rem;
     line-height: 1.5;
+    margin: 0;
   }
 `
 
