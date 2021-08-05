@@ -9,6 +9,7 @@ import "@fontsource/manrope/700.css"
 // import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import About from "./about"
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -28,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
     //colour intentions
     --darkBG: var(--almostBlack);
+    --highlight: var(--darkPeach);
 
     font-family: 'Manrope', sans-serif;
   }
@@ -41,11 +43,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    font-size: 2.5rem;
-    line-height: 1.1;
-    letter-spacing: 0.09375rem;
+    font-size: 1.75rem;
+    line-height: 1.35;
     text-transform: uppercase;
     font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+
+    @media(min-width: 600px) {
+      font-size: 2.5rem;
+      line-height: 1.1;
+      letter-spacing: 0.09375rem;
+    }
   }
 
   h3 {
@@ -81,9 +90,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-size: 0.9375rem;
-    line-height: 1.5;
     margin: 0;
+  }
+
+  p {
+    opacity: 0.5;
+    font-size: 0.9375rem;
+    line-height: 1.67;
   }
 `
 
@@ -101,14 +114,8 @@ export default function Layout({ children }) {
     <>
       <GlobalStyle />
       <Header />
-      <div>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      <main>{children}</main>
+      <About />
     </>
   )
 }
