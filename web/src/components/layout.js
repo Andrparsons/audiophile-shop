@@ -10,6 +10,7 @@ import "@fontsource/manrope/700.css"
 
 import Header from "./header"
 import About from "./about"
+import Footer from "./footer"
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -30,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
     //colour intentions
     --darkBG: var(--almostBlack);
     --highlight: var(--darkPeach);
+    --hover: var(--darkPeach);
 
     font-family: 'Manrope', sans-serif;
   }
@@ -97,6 +99,7 @@ const GlobalStyle = createGlobalStyle`
     opacity: 0.5;
     font-size: 0.9375rem;
     line-height: 1.67;
+    font-weight: 400;
   }
 `
 
@@ -116,6 +119,7 @@ export default function Layout({ children }) {
       <Header />
       <main>{children}</main>
       <About />
+      <Footer />
     </>
   )
 }

@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import menuIcon from "../images/shared/tablet/icon-hamburger.svg"
-import cartIcon from "../images/shared/desktop/icon-cart.svg"
+import IconMenu from "../images/shared/tablet/icon-hamburger.svg"
+import IconCart from "../images/shared/desktop/icon-cart.svg"
 
 const HeaderContainer = styled.header`
   background-color: var(--darkBG);
@@ -84,6 +84,11 @@ const NavItem = styled.li`
     letter-spacing: 0.125rem;
     font-weight: 700;
     margin-right: 2.125rem;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--hover);
+    }
 
     &::last-of-type {
       margin-right: 0;
@@ -121,7 +126,7 @@ export default function Header() {
       <HeaderFlex>
         <HeaderLogoGroup>
           <MenuBtn open={open} onClick={() => setOpen(!open)}>
-            <img src={menuIcon} alt="" />
+            <IconMenu />
           </MenuBtn>
           <ImgContainer>
             <StaticImage
@@ -147,7 +152,7 @@ export default function Header() {
           </NavItem>
         </DesktopNav>
         <HeaderBtn>
-          <img src={cartIcon} alt="" />
+          <IconCart />
         </HeaderBtn>
       </HeaderFlex>
       <HeaderBreak />
