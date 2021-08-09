@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import IconMenu from "../images/shared/tablet/icon-hamburger.svg"
-import IconCart from "../images/shared/desktop/icon-cart.svg"
+import IconMenu from "../images/shared/svgs/icon-hamburger.svg"
+import IconCart from "../images/shared/svgs/icon-cart.svg"
 
 const HeaderContainer = styled.header`
   background-color: var(--darkBG);
@@ -133,6 +133,7 @@ export default function Header() {
               src="../images/shared/desktop/logo.svg"
               formats={["AUTO", "WEBP", "AVIF"]}
               width={143}
+              placeholder="blurred"
               alt="Audiophile Logo"
             />
           </ImgContainer>
@@ -142,13 +143,13 @@ export default function Header() {
             <Link to="/">home</Link>
           </NavItem>
           <NavItem>
-            <Link to="headphones">headphones</Link>
+            <Link to="/headphones">headphones</Link>
           </NavItem>
           <NavItem>
-            <Link to="speakers">speakers</Link>
+            <Link to="/speakers">speakers</Link>
           </NavItem>
           <NavItem>
-            <Link to="earphones">earphones</Link>
+            <Link to="/earphones">earphones</Link>
           </NavItem>
         </DesktopNav>
         <HeaderBtn>
