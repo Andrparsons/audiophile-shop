@@ -33,6 +33,14 @@ const GlobalStyle = createGlobalStyle`
     --highlight: var(--darkPeach);
     --hover: var(--darkPeach);
 
+    //btns
+    --primaryBtn: var(--darkPeach);
+    --primaryBtnHover: var(--peach);
+    --secondaryBtn: var(--white);
+    --secondaryBtnHover: var(--black);
+
+
+
     font-family: 'Manrope', sans-serif;
   }
 

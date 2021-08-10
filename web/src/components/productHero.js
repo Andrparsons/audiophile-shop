@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
+import Button from "./button"
+
 import mobileBg from "../images/home/mobile/image-header.jpg"
 import tabletBg from "../images/home/tablet/image-header.jpg"
 import desktopBg from "../images/home/desktop/image-hero.jpg"
@@ -26,8 +28,6 @@ const ProductTitle = styled.h2``
 
 const ProductText = styled.p``
 
-const ShopButton = styled.button``
-
 export default function ProductHero() {
   return (
     <ProductHeroSection>
@@ -37,7 +37,7 @@ export default function ProductHero() {
         Experience natural, lifelike audio and exceptional build quality made
         for the passionate music enthusiast.
       </ProductText>
-      <ShopButton>See Product</ShopButton>
+      <Button primary>See Product</Button>
     </ProductHeroSection>
   )
 }
