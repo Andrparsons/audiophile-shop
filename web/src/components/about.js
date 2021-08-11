@@ -37,7 +37,9 @@ const AboutTextGroup = styled.div`
   }
 `
 
-const AboutTitle = styled.h2``
+const AboutTitle = styled.h2`
+  margin-top: 2.5rem;
+`
 
 const AboutText = styled.p`
   margin-top: 2rem;

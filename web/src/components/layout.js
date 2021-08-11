@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     //colours
     --darkPeach: #d87d4a;
     --peach: #fbaf85;
-    --almostBlack: #101010;
+    --almostBlack: #0c0c0c;
     --black: #000000;
     --almostWhite: #f1f1f1;
     --closeWhite: #fafafa;
@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
 
     //colour intentions
+    --blendBg: #101010;
     --darkBG: var(--almostBlack);
     --highlight: var(--darkPeach);
     --hover: var(--darkPeach);
@@ -45,11 +46,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 3.5rem;
-    line-height: 1.04;
-    letter-spacing: .125rem;
+    font-size: 2.25rem;
+    line-height: 1.11;
+    letter-spacing: 0.075rem;
     text-transform: uppercase;
     font-weight: 700;
+    margin: 0;
+
+    @media(min-width: 600px) {
+      font-size: 3.5rem;
+      line-height: 1.04;
+      letter-spacing: .125rem;
+    }
   }
 
   h2 {
@@ -57,8 +65,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.35;
     text-transform: uppercase;
     font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom: 0;
+    margin: 0;
 
     @media(min-width: 600px) {
       font-size: 2.5rem;
@@ -108,6 +115,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 0.9375rem;
     line-height: 1.67;
     font-weight: 400;
+    margin: 0;
   }
 `
 
