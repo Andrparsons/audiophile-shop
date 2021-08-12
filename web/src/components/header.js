@@ -23,7 +23,7 @@ const HeaderFlex = styled.div`
 
   @media (min-width: 1000px) {
     margin: 0 auto;
-    max-width: 77%;
+    max-width: 1100px;
   }
 `
 
@@ -108,7 +108,7 @@ const HeaderBreak = styled.hr`
 
   @media (min-width: 1000px) {
     margin: 0 auto;
-    max-width: 77%;
+    max-width: 1100px;
   }
 `
 

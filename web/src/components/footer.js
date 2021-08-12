@@ -20,7 +20,7 @@ const FooterContent = styled.div`
 
   @media (min-width: 1000px) {
     margin: 12.5rem auto 0 auto;
-    max-width: 77%;
+    max-width: 1100px;
   }
 `
 

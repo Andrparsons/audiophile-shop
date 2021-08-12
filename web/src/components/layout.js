@@ -40,6 +40,8 @@ const GlobalStyle = createGlobalStyle`
     --secondaryBtn: var(--white);
     --secondaryBtnHover: var(--black);
 
+    --shopNavBG: var(--almostWhite);
+
 
 
     font-family: 'Manrope', sans-serif;
@@ -116,6 +118,11 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.67;
     font-weight: 400;
     margin: 0;
+  }
+
+  button {
+  font-family: "Manrope", sans-serif;
+
   }
 `
 

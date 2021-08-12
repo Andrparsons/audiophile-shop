@@ -18,7 +18,7 @@ const AboutSection = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
-    max-width: 77%;
+    max-width: 1100px;
     margin: 0 auto;
   }
 `

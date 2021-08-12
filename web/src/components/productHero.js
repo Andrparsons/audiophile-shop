@@ -33,9 +33,8 @@ const ProductHeroSection = styled.section`
 
     @media (min-width: 1000px) {
       background-image: url(${desktopBg});
-      max-width: 77%;
+      max-width: 1100px;
       margin: auto;
-      background-position: right;
     }
   }
 
@@ -50,7 +49,7 @@ const ProductHeroSection = styled.section`
     z-index: 0;
 
     @media (min-width: 1000px) {
-      max-width: 77%;
+      max-width: 1100px;
       margin: auto;
     }
   }
@@ -72,7 +71,7 @@ const ProductHeroContainer = styled.div`
   @media (min-width: 1000px) {
     text-align: left;
     align-items: flex-start;
-    max-width: 77%;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0;
     padding-top: 14rem;
