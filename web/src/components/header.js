@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
+import Logo from "../images/shared/svgs/logo.svg"
 import IconMenu from "../images/shared/svgs/icon-hamburger.svg"
 import IconCart from "../images/shared/svgs/icon-cart.svg"
 
@@ -129,13 +129,7 @@ export default function Header() {
             <IconMenu />
           </MenuBtn>
           <ImgContainer>
-            <StaticImage
-              src="../images/shared/desktop/logo.svg"
-              formats={["AUTO", "WEBP", "AVIF"]}
-              width={143}
-              placeholder="blurred"
-              alt="Audiophile Logo"
-            />
+            <Logo />
           </ImgContainer>
         </HeaderLogoGroup>
         <DesktopNav>

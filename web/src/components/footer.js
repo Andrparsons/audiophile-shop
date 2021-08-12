@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+
+import Logo from "../images/shared/svgs/logo.svg"
 import IconFacebook from "../images/shared/svgs/icon-facebook.svg"
 import IconInstagram from "../images/shared/svgs/icon-instagram.svg"
 import IconTwitter from "../images/shared/svgs/icon-twitter.svg"
@@ -194,12 +195,7 @@ export default function Footer() {
         <FooterGrid>
           <FooterFlex>
             <ImgContainer>
-              <StaticImage
-                src="../images/shared/desktop/logo.svg"
-                formats={["AUTO", "WEBP", "AVIF"]}
-                width={143}
-                alt="Audiophile Logo"
-              />
+              <Logo />
             </ImgContainer>
             <FooterNav>
               <NavItem>
