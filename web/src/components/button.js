@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   padding: 1.15em 2.3em;
   border: 0.075em solid var(--black);
+  font-family: "Manrope", sans-serif;
 
   ${props =>
     props.primary &&
