@@ -1,2 +1,4 @@
 [build]
   base    = "web"
+  publish = "web/public/"
+  command = "gastby build"
