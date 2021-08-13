@@ -52,7 +52,7 @@ const Highlight = styled.span`
 
 export default function About() {
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query aboutImages {
       allFile(
         filter: { name: { eq: "image-best-gear" } }
         sort: { fields: relativePath }

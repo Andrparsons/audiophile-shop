@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     --almostWhite: #f1f1f1;
     --closeWhite: #fafafa;
     --white: #ffffff;
+    --grey: #4c4c4c;
 
 
     //colour intentions
@@ -33,12 +34,16 @@ const GlobalStyle = createGlobalStyle`
     --darkBG: var(--almostBlack);
     --highlight: var(--darkPeach);
     --hover: var(--darkPeach);
+    --featureBG: var(--darkPeach);
 
     //btns
     --primaryBtn: var(--darkPeach);
     --primaryBtnHover: var(--peach);
     --secondaryBtn: var(--white);
     --secondaryBtnHover: var(--black);
+    --tertiaryBtn: var(--black);
+    --tertiaryBtnHover: var(--grey);
+
 
     --shopNavBG: var(--almostWhite);
 

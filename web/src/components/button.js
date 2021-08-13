@@ -37,6 +37,19 @@ const StyledButton = styled.button`
       color: var(--white);
     }
   `}
+
+${props =>
+    props.tertiary &&
+    `
+    background-color: var(--tertiaryBtn);
+    border: 0.075em solid var(--black);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--tertiaryBtnHover);
+      border: 0.075em solid var(--tertiaryBtnHover);
+    }
+  `}
 `
 
 export default function Button({ children, ...restProps }) {
