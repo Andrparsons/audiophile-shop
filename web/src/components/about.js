@@ -19,7 +19,7 @@ const AboutSection = styled.section`
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 12.5rem auto 0 auto;
   }
 `
 
@@ -89,7 +89,7 @@ export default function About() {
     <AboutSection>
       <GatsbyImage
         image={images}
-        className="art-direction"
+        className="art-direction-about"
         alt="a man enjoying high quality sound"
       />
       <AboutTextGroup>
