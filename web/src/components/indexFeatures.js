@@ -84,6 +84,7 @@ const SecondaryFeature = styled.div`
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1.5rem;
+  position: relative;
 
   @media (min-width: 600px) {
     margin-top: 2rem;
@@ -94,7 +95,39 @@ const SecondaryFeature = styled.div`
   }
 `
 
-const TertiaryFeature = styled.div``
+const SecondaryTitle = styled.h2`
+  margin-bottom: 2rem;
+`
+
+const SecondaryTextContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+  margin-left: 1.5rem;
+`
+
+const TertiaryFeature = styled.div`
+  margin-top: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1000px) {
+    margin-top: 3rem;
+  }
+`
+
+const TertiaryTextContainter = styled.div`
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+`
+
+const TertiaryImageContainer = styled.div`
+  border-radius: 0.5rem;
+  overflow: hidden;
+`
 
 export default function IndexFeatures() {
   const data = useStaticQuery(graphql`
@@ -189,14 +222,24 @@ export default function IndexFeatures() {
           className="art-direction-zx7"
           alt="close up of the zx7 speaker"
         />
+        <SecondaryTextContainer>
+          <SecondaryTitle>zx7 speaker</SecondaryTitle>
+          <Button secondary>see product</Button>
+        </SecondaryTextContainer>
       </SecondaryFeature>
 
       <TertiaryFeature>
-        <GatsbyImage
-          image={yx1images}
-          className=""
-          alt="close up of the zx9 speaker"
-        />
+        <TertiaryImageContainer>
+          <GatsbyImage
+            image={yx1images}
+            className=""
+            alt="close up of the yx1 earphones"
+          />
+        </TertiaryImageContainer>
+        <TertiaryTextContainter>
+          <SecondaryTitle>yx1 earphones</SecondaryTitle>
+          <Button secondary>see product</Button>
+        </TertiaryTextContainter>
       </TertiaryFeature>
     </FeatureSection>
   )
