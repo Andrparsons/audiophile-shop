@@ -95,8 +95,9 @@ const SecondaryFeature = styled.div`
   }
 `
 
-const SecondaryTitle = styled.h2`
+const SecondaryTitle = styled.h4`
   margin-bottom: 2rem;
+  margin-top: 0;
 `
 
 const SecondaryTextContainer = styled.div`
@@ -110,14 +111,16 @@ const SecondaryTextContainer = styled.div`
 const TertiaryFeature = styled.div`
   margin-top: 1.5rem;
 
-  @media (min-width: 600px) {
+  @media (min-width: 550px) {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.625rem;
   }
 
   @media (min-width: 1000px) {
     margin-top: 3rem;
+    column-gap: 1.875rem;
   }
 `
 
@@ -128,8 +131,13 @@ const TertiaryTextContainter = styled.div`
   text-align: left;
   padding: 2.5rem 1.5rem;
 
-  @media (min-width: 600px) {
+  @media (min-width: 550px) {
     margin-top: 0;
+    padding: 6.3125rem 2.5rem;
+  }
+
+  @media (min-width: 550px) {
+    padding: 6.3125rem 5.9375rem;
   }
 `
 
@@ -200,12 +208,10 @@ export default function IndexFeatures() {
       image: getImage(deskyx1.node),
     },
     {
-      media: "(min-width: 600px",
+      media: "(min-width: 550px",
       image: getImage(tabletyx1.node),
     },
   ])
-
-  console.log(data.zx7)
 
   return (
     <FeatureSection>
@@ -241,7 +247,7 @@ export default function IndexFeatures() {
         <TertiaryImageContainer>
           <GatsbyImage
             image={yx1images}
-            className=""
+            className="art-direction-yx1"
             alt="close up of the yx1 earphones"
           />
         </TertiaryImageContainer>
