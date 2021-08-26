@@ -112,6 +112,8 @@ const TertiaryFeature = styled.div`
 
   @media (min-width: 600px) {
     margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (min-width: 1000px) {
@@ -122,6 +124,13 @@ const TertiaryFeature = styled.div`
 const TertiaryTextContainter = styled.div`
   margin-top: 1.5rem;
   border-radius: 0.5rem;
+  background-color: var(--shopNavBG);
+  text-align: left;
+  padding: 2.5rem 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 0;
+  }
 `
 
 const TertiaryImageContainer = styled.div`
