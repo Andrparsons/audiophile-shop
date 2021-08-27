@@ -11,7 +11,7 @@ const Earphones = () => (
   <Layout>
     <Seo title="Home" />
     <CategoryHeader title="earphones" />
-    <FeaturedProducts />
+    {/* <FeaturedProducts /> */}
     <ShopNav />
   </Layout>
 )

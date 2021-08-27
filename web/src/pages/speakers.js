@@ -11,7 +11,7 @@ const Speakers = () => (
   <Layout>
     <Seo title="Home" />
     <CategoryHeader title="speakers" />
-    <FeaturedProducts />
+    {/* <FeaturedProducts /> */}
     <ShopNav />
   </Layout>
 )
