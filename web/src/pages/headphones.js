@@ -34,7 +34,7 @@ export default function Headphones() {
               size
               alt
               asset {
-                gatsbyImageData
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }
