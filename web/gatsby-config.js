@@ -1,3 +1,9 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const path = require("path")
+
 module.exports = {
   siteMetadata: {
     title: `Audiophile Web Shop`,
@@ -32,8 +38,9 @@ module.exports = {
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: "82c57ak8",
-        dataset: "production",
+        projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_SANITY_DATASET,
+        token: process.env.GATSBY_SANITY_TOKEN,
       },
     },
     {
