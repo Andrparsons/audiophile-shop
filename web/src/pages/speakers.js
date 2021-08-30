@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -7,13 +7,45 @@ import CategoryHeader from "../components/categoryHeader"
 import ShopNav from "../components/shopNav"
 import FeaturedProducts from "../components/featuredProducts"
 
-const Speakers = () => (
-  <Layout>
-    <Seo title="Home" />
-    <CategoryHeader title="speakers" />
-    {/* <FeaturedProducts /> */}
-    <ShopNav />
-  </Layout>
-)
+export default function Speakers() {
+  const data = useStaticQuery(graphql`
+    query speakers {
+      allSanityProduct(
+        filter: { category: { elemMatch: { title: { eq: "speakers" } } } }
+        sort: { order: DESC, fields: new }
+      ) {
+        edges {
+          node {
+            id
+            productName
+            slug {
+              current
+            }
+            new
+            description {
+              children {
+                text
+              }
+            }
+            productImage {
+              size
+              alt
+              asset {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-export default Speakers
+  return (
+    <Layout>
+      <Seo title="Home" />
+      <CategoryHeader title="speakers" />
+      <FeaturedProducts products={data.allSanityProduct.edges} />
+      <ShopNav />
+    </Layout>
+  )
+}
