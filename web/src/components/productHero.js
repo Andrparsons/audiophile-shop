@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import Button from "./button"
 
@@ -128,7 +129,9 @@ export default function ProductHero() {
           for the passionate music enthusiast.
         </ProductText>
         <ButtonContainer>
-          <Button primary>See Product</Button>
+          <Link to="/product/xx99-mark-one-headphones">
+            <Button primary>See Product</Button>
+          </Link>
         </ButtonContainer>
       </ProductHeroContainer>
     </ProductHeroSection>

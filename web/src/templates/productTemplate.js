@@ -85,6 +85,8 @@ export default function ProductTemplate({ pageContext: { product } }) {
     },
   ])
 
+  console.log(product)
+
   return (
     <Layout>
       <Seo title={product.productName} />

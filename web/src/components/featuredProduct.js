@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+
 import Button from "./button"
 import NewProduct from "./newProductline"
 
@@ -54,7 +56,9 @@ export default function FeaturedProduct(data) {
         <NewProduct new={product.new}>new product</NewProduct>
         <ProductName>{product.productName}</ProductName>
         <ProductText>{product.description[0].children[0].text}</ProductText>
-        <Button primary>see product</Button>
+        <Link to={`/product/${product.slug.current}/`}>
+          <Button primary>see product</Button>
+        </Link>
       </ProductContent>
     </FeaturedProductItem>
   )

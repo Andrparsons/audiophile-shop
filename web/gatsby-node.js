@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
               size
               alt
               asset {
-                gatsbyImageData
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
             productName
@@ -34,6 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
               order
               galleryImage {
                 size
+                alt
                 asset {
                   gatsbyImageData(placeholder: BLURRED)
                 }

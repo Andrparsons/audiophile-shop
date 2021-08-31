@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image"
 import Button from "./button"
 
@@ -145,7 +145,7 @@ const TertiaryImageContainer = styled.div`
   border-radius: 0.5rem;
   overflow: hidden;
 `
-
+//this could be changed to pull the first 3 'new' products - but this isn't nessecary
 export default function IndexFeatures() {
   const data = useStaticQuery(graphql`
     query featureImage {
@@ -227,7 +227,9 @@ export default function IndexFeatures() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </FeatureText>
-          <Button tertiary>see product</Button>
+          <Link to="/product/zx9-speaker">
+            <Button tertiary>see product</Button>
+          </Link>
         </FeatureTextGroup>
       </PrimaryFeature>
 
@@ -239,7 +241,9 @@ export default function IndexFeatures() {
         />
         <SecondaryTextContainer>
           <SecondaryTitle>zx7 speaker</SecondaryTitle>
-          <Button secondary>see product</Button>
+          <Link to="/product/zx7-speaker">
+            <Button secondary>see product</Button>
+          </Link>
         </SecondaryTextContainer>
       </SecondaryFeature>
 
@@ -253,7 +257,9 @@ export default function IndexFeatures() {
         </TertiaryImageContainer>
         <TertiaryTextContainter>
           <SecondaryTitle>yx1 earphones</SecondaryTitle>
-          <Button secondary>see product</Button>
+          <Link to="/product/zx7-speaker">
+            <Button secondary>see product</Button>
+          </Link>
         </TertiaryTextContainter>
       </TertiaryFeature>
     </FeatureSection>
