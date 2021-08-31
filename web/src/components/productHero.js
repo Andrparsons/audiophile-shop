@@ -45,8 +45,12 @@ const ProductHeroSection = styled.section`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--blendBg);
     z-index: 0;
+
+    //firefox and chrome render the png differently - this fixes it so it blends better
+    @-moz-document url-prefix() {
+      background-color: var(--blendBg);
+    }
 
     @media (min-width: 1000px) {
       max-width: 1100px;
