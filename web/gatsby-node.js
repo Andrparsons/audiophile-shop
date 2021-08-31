@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
               galleryImage {
                 size
                 asset {
-                  gatsbyImageData
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
             }
