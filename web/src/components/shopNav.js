@@ -13,6 +13,34 @@ const ShopNavContainer = styled.div`
   flex-direction: column;
   margin: 2.5rem 1.5rem 0 1.5rem;
 
+  ${props =>
+    props.mobileMenu &&
+    `
+    margin: 0;
+    padding: 2.5rem 1.5rem;
+
+    img{ 
+      max-width: 100px;
+    }
+
+    button {
+      margin-top: -0.5rem
+    }
+
+    @media (min-width: 600px) {
+      margin: 0 !important;
+      padding: 3.5rem 2.5rem;
+
+      img {
+        max-width: 150px
+      }
+
+      button {
+        margin-top: 3.25rem;
+      }
+    }
+  `}
+
   a {
     position: relative;
     margin-top: 1rem;
@@ -120,9 +148,9 @@ const ButtonShopText = styled.span`
 
 const ButtonShopIcon = styled.div``
 
-export default function ShopNav() {
+export default function ShopNav({ ...restProps }) {
   return (
-    <ShopNavContainer>
+    <ShopNavContainer {...restProps}>
       <Link to="/headphones">
         <ShopNavButton>
           <ButtonBackGround>

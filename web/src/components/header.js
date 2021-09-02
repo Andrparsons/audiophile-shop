@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
+import ShopNav from "./shopNav"
 import Logo from "../images/shared/svgs/logo.svg"
 import IconMenu from "../images/shared/svgs/icon-hamburger.svg"
 import IconCart from "../images/shared/svgs/icon-cart.svg"
 
 const HeaderContainer = styled.header`
   background-color: var(--darkBG);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 `
 
 const HeaderFlex = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,6 +117,20 @@ const HeaderBreak = styled.hr`
   }
 `
 
+const MenuOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  display: ${({ open }) => (open ? "block" : "none")};
+  background-color: #00000066;
+  height: 100vh;
+`
+
+const OverlayContainer = styled.div`
+  background-color: var(--white);
+`
+
 export default function Header() {
   const [open, setOpen] = useState(false)
 
@@ -150,6 +169,11 @@ export default function Header() {
           <IconCart />
         </HeaderBtn>
       </HeaderFlex>
+      <MenuOverlay open={open}>
+        <OverlayContainer>
+          <ShopNav mobileMenu />
+        </OverlayContainer>
+      </MenuOverlay>
       <HeaderBreak />
     </HeaderContainer>
   )

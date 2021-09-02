@@ -4,3 +4,8 @@
   border-radius: 0.5rem;
   overflow-x: hidden;
 }
+
+@media screen and (min-width: 600px) {
+  .art-direction-product {
+  }
+}
