@@ -6,6 +6,10 @@ import FeaturedProduct from "./featuredProduct"
 const FeaturedProductsSection = styled.section`
   margin: 4rem 1.5rem 7.5rem 1.5rem;
   text-align: center;
+
+  @media (min-width: 600px) {
+    margin: 7.5rem 2.5rem;
+  }
 `
 
 export default function FeaturedProducts(data) {

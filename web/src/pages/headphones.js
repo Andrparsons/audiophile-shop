@@ -30,7 +30,7 @@ export default function Headphones() {
                 marks
               }
             }
-            productImage {
+            categoryImage {
               size
               alt
               asset {

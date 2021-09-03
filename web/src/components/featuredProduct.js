@@ -17,11 +17,21 @@ const FeaturedProductItem = styled.div`
 `
 
 const ProductContent = styled.div`
-  margin-top: 2rem;
+  margin: 2rem auto 0 auto;
+  max-width: 572px;
+
+  @media (min-width: 600px) {
+    margin: 3.25rem auto 0 auto;
+  }
 `
 
 const ProductName = styled.h2`
   margin-bottom: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin: 0 auto 1.5rem auto;
+    max-width: 300px;
+  }
 `
 
 const ProductText = styled.p`
@@ -32,7 +42,7 @@ export default function FeaturedProduct(data) {
   const product = data.product
 
   //schema has the images in this order
-  const [mobile, tablet, desktop] = product.productImage
+  const [mobile, tablet, desktop] = product.categoryImage
 
   const images = withArtDirection(getImage(mobile.asset), [
     {

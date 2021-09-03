@@ -19,6 +19,11 @@ export default {
       type: "imageGroup",
     },
     {
+      name: "categoryImage",
+      title: "Image for use in category pages",
+      type: "imageGroup",
+    },
+    {
       name: "category",
       title: "Category",
       type: "array",
