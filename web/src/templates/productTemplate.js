@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image"
+import { navigate } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -90,6 +91,13 @@ export default function ProductTemplate({ pageContext: { product } }) {
   return (
     <Layout>
       <Seo title={product.productName} />
+      <button
+        onClick={() => {
+          navigate(-1)
+        }}
+      >
+        Go Back
+      </button>
       <Product>
         <ProductIntro>
           <GatsbyImage

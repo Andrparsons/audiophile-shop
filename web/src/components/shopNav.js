@@ -146,8 +146,6 @@ const ButtonShopText = styled.span`
   }
 `
 
-const ButtonShopIcon = styled.div``
-
 export default function ShopNav({ ...restProps }) {
   return (
     <ShopNavContainer {...restProps}>

@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 import "@fontsource/manrope/400.css"
 import "@fontsource/manrope/500.css"
