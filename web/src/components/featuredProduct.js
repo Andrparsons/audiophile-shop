@@ -14,6 +14,16 @@ const FeaturedProductItem = styled.div`
   &:first-of-type {
     margin-top: 0;
   }
+
+  @media (min-width: 1000px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
 `
 
 const ProductContent = styled.div`
@@ -22,6 +32,11 @@ const ProductContent = styled.div`
 
   @media (min-width: 600px) {
     margin: 3.25rem auto 0 auto;
+  }
+
+  @media (min-width: 1000px) {
+    margin: 0;
+    max-width: 445px;
   }
 `
 
@@ -32,10 +47,20 @@ const ProductName = styled.h2`
     margin: 0 auto 1.5rem auto;
     max-width: 300px;
   }
+
+  @media (min-width: 1000px) {
+    margin: 0;
+    margin-bottom: 2rem;
+    max-width: 300px;
+  }
 `
 
 const ProductText = styled.p`
   margin-bottom: 1.5rem;
+
+  @media (min-width: 1000px) {
+    margin-bottom: 2.5rem;
+  }
 `
 
 export default function FeaturedProduct(data) {

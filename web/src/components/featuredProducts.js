@@ -10,6 +10,12 @@ const FeaturedProductsSection = styled.section`
   @media (min-width: 600px) {
     margin: 7.5rem 2.5rem;
   }
+
+  @media (min-width: 1000px) {
+    margin: 10rem auto;
+    max-width: 1100px;
+    text-align: left;
+  }
 `
 
 export default function FeaturedProducts(data) {
