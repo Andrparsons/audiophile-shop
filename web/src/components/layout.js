@@ -45,9 +45,9 @@ const GlobalStyle = createGlobalStyle`
     --tertiaryBtnHover: var(--grey);
 
 
+    --iterationBG: var(--almostWhite);
+    --iterationHover: var(--darkPeach);
     --shopNavBG: var(--almostWhite);
-
-
 
     font-family: 'Manrope', sans-serif;
   }

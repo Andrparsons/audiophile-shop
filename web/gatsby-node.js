@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allSanityProduct {
         edges {
           node {
+            new
             productImage {
               size
               alt

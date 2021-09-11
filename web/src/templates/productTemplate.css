@@ -1,0 +1,20 @@
+.art-direction-template-main,
+.art-direction-template-first,
+.art-direction-template-second,
+.art-direction-template-third {
+  border-radius: 0.5rem;
+  overflow-x: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.art-direction-template-main {
+}
+
+.art-direction-template-first,
+.art-direction-template-second {
+  margin-bottom: 1.25rem;
+}
+
+.art-direction-template-third {
+}

@@ -7,31 +7,141 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ShopNav from "../components/shopNav"
 import NewProduct from "../components/newProductline"
+import Button from "../components/button"
 
-const Product = styled.section``
+import "./productTemplate.css"
+
+const Product = styled.section`
+  margin: 0 1.5rem;
+`
+
+const BackButton = styled.button`
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9375;
+  opacity: 0.65;
+  font-weight: 400;
+  line-height: 1.67;
+  color: var(--black);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+`
 
 const ProductIntro = styled.div``
 
+const ProductIntroContent = styled.div`
+  margin-top: 2rem;
+`
+
 const ProductFeatures = styled.div``
 
-const ProductImages = styled.div``
+const ProductImages = styled.div`
+  margin-top: 5.5rem;
+`
 
 const ProductName = styled.h2``
 
-const ProductText = styled.p``
+const ProductText = styled.p`
+  margin-top: 1.5rem;
+`
 
-const ProductPrice = styled.p``
+const ProductPrice = styled.p`
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  opacity: 1;
+  font-weight: 700;
+  margin-top: 1.5rem;
+`
 
-const FeatureTitle = styled.h3``
+const CartComponent = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+`
 
-const FeatureCol = styled.div``
+const IterationComponent = styled.div`
+  font-size: 0.8125rem;
+  letter-spacing: 0.075em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  min-width: 121px;
+`
 
-const IncludedItems = styled.ul``
+const IterationButton = styled.button`
+  font-size: 0.8125rem;
+  padding: 1.15em;
+  border: 0.075em solid var(--iterationBG);
+  cursor: pointer;
+  color: #00000080;
 
-const IncludedItem = styled.li``
+  &:hover {
+    color: var(--iterationHover);
+  }
+`
+
+const IterationQuantity = styled.span`
+  padding: 1.15em 0;
+  background-color: var(--iterationBG);
+  border: 0.075em solid var(--iterationBG);
+  width: 45px;
+  display: inline-block;
+  text-align: center;
+`
+
+const FeatureTitle = styled.h3`
+  margin-bottom: 0;
+`
+
+const FeatureCol = styled.div`
+  margin-top: 5.5rem;
+`
+
+const IncludedItems = styled.ul`
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  padding: 0;
+`
+
+const IncludedItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`
+
+const IncludedItemQuantity = styled.p`
+  display: inline-block;
+  width: 2.5rem;
+  color: var(--highlight);
+  opacity: 1;
+`
+
+const IncludedItemName = styled.p`
+  display: inline-block;
+`
 
 export default function ProductTemplate({ pageContext: { product } }) {
-  const [itemQuantity, setItemQuantity] = useState(0)
+  const [itemQuantity, setItemQuantity] = useState(1)
+
+  const increaseCount = () => {
+    setItemQuantity(itemQuantity + 1)
+  }
+
+  const decreaseCount = () => {
+    itemQuantity > 1 ? setItemQuantity(itemQuantity - 1) : setItemQuantity(1)
+  }
+
+  const price = new Intl.NumberFormat("en-us", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(product.price)
 
   //schema has the images in this order
   const [mainMobile, mainTablet, mainDesktop] = product.productImage
@@ -86,29 +196,37 @@ export default function ProductTemplate({ pageContext: { product } }) {
     },
   ])
 
-  console.log(product)
-
   return (
     <Layout>
       <Seo title={product.productName} />
-      <button
-        onClick={() => {
-          navigate(-1)
-        }}
-      >
-        Go Back
-      </button>
       <Product>
+        <BackButton
+          onClick={() => {
+            navigate(-1)
+          }}
+        >
+          Go Back
+        </BackButton>
         <ProductIntro>
           <GatsbyImage
             image={mainImages}
             alt={mainMobile.alt}
             className="art-direction-template-main"
           />
-          <NewProduct new={product.new}>new product</NewProduct>
-          <ProductName>{product.productName}</ProductName>
-          <ProductText>{product.description[0].children[0].text}</ProductText>
-          <ProductPrice>{product.price}</ProductPrice>
+          <ProductIntroContent>
+            <NewProduct new={product.new}>new product</NewProduct>
+            <ProductName>{product.productName}</ProductName>
+            <ProductText>{product.description[0].children[0].text}</ProductText>
+            <ProductPrice>{price}</ProductPrice>
+            <CartComponent>
+              <IterationComponent>
+                <IterationButton onClick={decreaseCount}>-</IterationButton>
+                <IterationQuantity>{itemQuantity}</IterationQuantity>
+                <IterationButton onClick={increaseCount}>+</IterationButton>
+              </IterationComponent>
+              <Button primary>add to cart</Button>
+            </CartComponent>
+          </ProductIntroContent>
         </ProductIntro>
         <ProductFeatures>
           <FeatureCol>
@@ -121,8 +239,10 @@ export default function ProductTemplate({ pageContext: { product } }) {
             <IncludedItems>
               {product.includes.map(include => (
                 <IncludedItem key={include._key}>
-                  <p>{include.quantity}</p>
-                  <p>{include.item}</p>
+                  <IncludedItemQuantity>
+                    {include.quantity}x
+                  </IncludedItemQuantity>
+                  <IncludedItemName>{include.item}</IncludedItemName>
                 </IncludedItem>
               ))}
             </IncludedItems>
