@@ -132,15 +132,6 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function Layout({ children }) {
-  //   const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
   return (
     <>
       <GlobalStyle />

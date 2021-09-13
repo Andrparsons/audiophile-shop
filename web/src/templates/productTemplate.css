@@ -8,12 +8,16 @@
   max-height: 100%;
 }
 
-.art-direction-template-main {
-}
-
 .art-direction-template-first,
 .art-direction-template-second {
   margin-bottom: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .art-direction-template-main {
+    height: 480px;
+    width: 280px;
+  }
 }
 
 .art-direction-template-third {

@@ -13,6 +13,10 @@ import "./productTemplate.css"
 
 const Product = styled.section`
   margin: 0 1.5rem;
+
+  @media (min-width: 600px) {
+    margin: 0 2.5rem;
+  }
 `
 
 const BackButton = styled.button`
@@ -29,10 +33,28 @@ const BackButton = styled.button`
   margin-bottom: 1.5rem;
 `
 
-const ProductIntro = styled.div``
+const ProductIntro = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
+`
 
 const ProductIntroContent = styled.div`
   margin-top: 2rem;
+
+  @media (min-width: 600px) {
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    margin-left: 3rem;
+  }
 `
 
 const ProductFeatures = styled.div``
@@ -41,7 +63,11 @@ const ProductImages = styled.div`
   margin-top: 5.5rem;
 `
 
-const ProductName = styled.h2``
+const ProductName = styled.h2`
+  @media (min-width: 600px) {
+    font-size: 1.75rem;
+  }
+`
 
 const ProductText = styled.p`
   margin-top: 1.5rem;
@@ -67,7 +93,7 @@ const IterationComponent = styled.div`
   font-weight: 700;
   text-transform: uppercase;
   margin-right: 1rem;
-  min-width: 121px;
+  min-width: 122px;
 `
 
 const IterationButton = styled.button`
@@ -208,11 +234,13 @@ export default function ProductTemplate({ pageContext: { product } }) {
           Go Back
         </BackButton>
         <ProductIntro>
-          <GatsbyImage
-            image={mainImages}
-            alt={mainMobile.alt}
-            className="art-direction-template-main"
-          />
+          <div>
+            <GatsbyImage
+              image={mainImages}
+              alt={mainMobile.alt}
+              className="art-direction-template-main"
+            />
+          </div>
           <ProductIntroContent>
             <NewProduct new={product.new}>new product</NewProduct>
             <ProductName>{product.productName}</ProductName>
