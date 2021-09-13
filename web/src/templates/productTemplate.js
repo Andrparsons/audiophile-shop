@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image"
 import { navigate } from "gatsby"
@@ -7,7 +7,8 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ShopNav from "../components/shopNav"
 import NewProduct from "../components/newProductline"
-import Button from "../components/button"
+
+import PageCart from "../components/pageCart"
 
 import "./productTemplate.css"
 
@@ -81,44 +82,6 @@ const ProductPrice = styled.p`
   margin-top: 1.5rem;
 `
 
-const CartComponent = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 2rem;
-`
-
-const IterationComponent = styled.div`
-  font-size: 0.8125rem;
-  letter-spacing: 0.075em;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-right: 1rem;
-  min-width: 122px;
-`
-
-const IterationButton = styled.button`
-  -webkit-appearance: none;
-  background-color: var(--iterationBG);
-  font-size: 0.8125rem;
-  padding: 1.15em;
-  border: 0.075em solid var(--iterationBG);
-  cursor: pointer;
-  color: #00000080;
-
-  &:hover {
-    color: var(--iterationHover);
-  }
-`
-
-const IterationQuantity = styled.span`
-  padding: 1.15em 0;
-  background-color: var(--iterationBG);
-  border: 0.075em solid var(--iterationBG);
-  width: 45px;
-  display: inline-block;
-  text-align: center;
-`
-
 const FeatureTitle = styled.h3`
   margin-bottom: 0;
 `
@@ -154,16 +117,6 @@ const IncludedItemName = styled.p`
 `
 
 export default function ProductTemplate({ pageContext: { product } }) {
-  const [itemQuantity, setItemQuantity] = useState(1)
-
-  const increaseCount = () => {
-    setItemQuantity(itemQuantity + 1)
-  }
-
-  const decreaseCount = () => {
-    itemQuantity > 1 ? setItemQuantity(itemQuantity - 1) : setItemQuantity(1)
-  }
-
   const price = new Intl.NumberFormat("en-us", {
     style: "currency",
     currency: "USD",
@@ -248,14 +201,7 @@ export default function ProductTemplate({ pageContext: { product } }) {
             <ProductName>{product.productName}</ProductName>
             <ProductText>{product.description[0].children[0].text}</ProductText>
             <ProductPrice>{price}</ProductPrice>
-            <CartComponent>
-              <IterationComponent>
-                <IterationButton onClick={decreaseCount}>-</IterationButton>
-                <IterationQuantity>{itemQuantity}</IterationQuantity>
-                <IterationButton onClick={increaseCount}>+</IterationButton>
-              </IterationComponent>
-              <Button primary>add to cart</Button>
-            </CartComponent>
+            <PageCart />
           </ProductIntroContent>
         </ProductIntro>
         <ProductFeatures>
