@@ -2,6 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from "styled-components"
 
+import "normalize.css"
 import "@fontsource/manrope/400.css"
 import "@fontsource/manrope/500.css"
 import "@fontsource/manrope/700.css"
