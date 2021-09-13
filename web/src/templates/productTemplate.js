@@ -97,6 +97,8 @@ const IterationComponent = styled.div`
 `
 
 const IterationButton = styled.button`
+  -webkit-appearance: none;
+  background-color: var(--iterationBG);
   font-size: 0.8125rem;
   padding: 1.15em;
   border: 0.075em solid var(--iterationBG);
