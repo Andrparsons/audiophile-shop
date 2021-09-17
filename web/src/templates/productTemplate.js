@@ -201,7 +201,7 @@ export default function ProductTemplate({ pageContext: { product } }) {
             <ProductName>{product.productName}</ProductName>
             <ProductText>{product.description[0].children[0].text}</ProductText>
             <ProductPrice>{price}</ProductPrice>
-            <PageCart />
+            <PageCart {...product} />
           </ProductIntroContent>
         </ProductIntro>
         <ProductFeatures>

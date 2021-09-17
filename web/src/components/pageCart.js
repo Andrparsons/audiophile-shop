@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
+import { CartContext } from "../context/cartContext"
+import { addToCart, removeFromCart } from "../context/cartReducer"
 
 import Button from "./button"
 
@@ -42,7 +44,7 @@ const IterationQuantity = styled.span`
   text-align: center;
 `
 
-export default function PageCart() {
+export default function PageCart(product) {
   const [itemQuantity, setItemQuantity] = useState(1)
 
   const increaseCount = e => {
@@ -55,6 +57,17 @@ export default function PageCart() {
     itemQuantity > 1 ? setItemQuantity(itemQuantity - 1) : setItemQuantity(1)
   }
 
+  //cart context
+  const { cart, dispatch } = useContext(CartContext)
+  const addToCartHandler = (product, quantity) => {
+    dispatch(addToCart(product, quantity))
+  }
+  const removeFromCartHandler = product => {
+    dispatch(removeFromCart(product))
+  }
+
+  const inCart = cart.find(item => item.id === product.id) ? true : false
+
   return (
     <CartComponent>
       <IterationComponent>
@@ -62,7 +75,18 @@ export default function PageCart() {
         <IterationQuantity>{itemQuantity}</IterationQuantity>
         <IterationButton onClick={increaseCount}>+</IterationButton>
       </IterationComponent>
-      <Button primary>add to cart</Button>
+      {inCart ? (
+        <Button
+          primary
+          onClick={() => removeFromCartHandler(product, itemQuantity)}
+        >
+          remove item
+        </Button>
+      ) : (
+        <Button primary onClick={() => addToCartHandler(product, itemQuantity)}>
+          add to cart
+        </Button>
+      )}
     </CartComponent>
   )
 }

@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import ShopNav from "./shopNav"
+import Cart from "./cart"
 import Logo from "../images/shared/svgs/logo.svg"
 import IconMenu from "../images/shared/svgs/icon-hamburger.svg"
 import IconCart from "../images/shared/svgs/icon-cart.svg"
@@ -36,6 +37,7 @@ const HeaderBtn = styled.button`
   border: none;
   background: transparent;
   align-self: end;
+  cursor: pointer;
 `
 
 const MenuBtn = styled(HeaderBtn)`
@@ -132,19 +134,20 @@ const OverlayContainer = styled.div`
 `
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
 
   useEffect(() => {
-    open
+    navOpen || cartOpen
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "unset")
-  }, [open])
+  }, [navOpen, cartOpen])
 
   return (
     <HeaderContainer>
       <HeaderFlex>
         <HeaderLogoGroup>
-          <MenuBtn open={open} onClick={() => setOpen(!open)}>
+          <MenuBtn open={navOpen} onClick={() => setNavOpen(!navOpen)}>
             <IconMenu />
           </MenuBtn>
           <ImgContainer>
@@ -165,14 +168,17 @@ export default function Header() {
             <Link to="/earphones">earphones</Link>
           </NavItem>
         </DesktopNav>
-        <HeaderBtn>
+        <HeaderBtn open={cartOpen} onClick={() => setCartOpen(!cartOpen)}>
           <IconCart />
         </HeaderBtn>
       </HeaderFlex>
-      <MenuOverlay open={open}>
+      <MenuOverlay open={navOpen}>
         <OverlayContainer>
           <ShopNav mobileMenu />
         </OverlayContainer>
+      </MenuOverlay>
+      <MenuOverlay open={cartOpen}>
+        <Cart />
       </MenuOverlay>
       <HeaderBreak />
     </HeaderContainer>

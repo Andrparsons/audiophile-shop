@@ -7,7 +7,7 @@ import "@fontsource/manrope/400.css"
 import "@fontsource/manrope/500.css"
 import "@fontsource/manrope/700.css"
 
-// import { useStaticQuery, graphql } from "gatsby"
+import { CartProvider } from "../context/cartContext"
 
 import Header from "./header"
 import About from "./about"
@@ -135,11 +135,13 @@ const GlobalStyle = createGlobalStyle`
 export default function Layout({ children }) {
   return (
     <>
-      <GlobalStyle />
-      <Header />
-      <main>{children}</main>
-      <About />
-      <Footer />
+      <CartProvider>
+        <GlobalStyle />
+        <Header />
+        <main>{children}</main>
+        <About />
+        <Footer />
+      </CartProvider>
     </>
   )
 }
