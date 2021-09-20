@@ -50,6 +50,12 @@ ${props =>
       border: 0.075em solid var(--tertiaryBtnHover);
     }
   `}
+
+  ${props =>
+    props.strech &&
+    `
+      width: 100%;
+    `}
 `
 
 export default function Button({ children, ...restProps }) {

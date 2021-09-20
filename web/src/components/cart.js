@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { CartContext } from "../context/cartContext"
 import { clearCart } from "../context/cartReducer"
 import CartItem from "./cartItem"
+import Button from "./button"
 
 const CartContainer = styled.div`
   margin: 2.5rem 1.5rem 0 1.5rem;
@@ -13,8 +14,30 @@ const CartContainer = styled.div`
   overflow: scroll;
   max-height: 75vh;
 `
+const CartHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`
 
-const TotalItems = styled.h4``
+const CartFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const TotalTitle = styled.p``
+
+const Total = styled.h6``
+
+const RemoveLink = styled.p`
+  text-decoration: underline;
+  font-weight: 700;
+`
+
+const TotalItems = styled.h6``
+
+const ButtonFlex = styled.div``
 
 export default function Cart() {
   const { cart, dispatch } = useContext(CartContext)
@@ -30,14 +53,31 @@ export default function Cart() {
 
   return (
     <CartContainer>
-      <TotalItems>Cart ({items})</TotalItems>
-      <button onClick={() => clearHandler()}>clear cart</button>
+      <CartHeader>
+        <TotalItems>Cart ({items})</TotalItems>
+        <RemoveLink onClick={() => clearHandler()}>Remove all</RemoveLink>
+      </CartHeader>
       {cart.length > 0 ? (
         cart.map(product => <CartItem key={product.id} {...product} />)
       ) : (
         <div>The cart is empty</div>
       )}
-      <div>Total {total}</div>
+      <CartFooter>
+        <TotalTitle>Total</TotalTitle>
+        <Total>
+          {new Intl.NumberFormat("en-us", {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }).format(total)}
+        </Total>
+      </CartFooter>
+      <ButtonFlex>
+        <Button primary strech>
+          checkout
+        </Button>
+      </ButtonFlex>
     </CartContainer>
   )
 }
