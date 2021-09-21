@@ -12,6 +12,7 @@ const ShopNavContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 2.5rem 1.5rem 0 1.5rem;
+  flex-grow: 1;
 
   ${props =>
     props.mobileMenu &&

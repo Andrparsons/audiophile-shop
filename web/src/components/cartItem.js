@@ -1,12 +1,26 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import { CartContext } from "../context/cartContext"
 import { increase, decrease } from "../context/cartReducer"
 
 const CartItemContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+`
+
+const CartImage = styled.div`
+  height: 4rem;
+  width: 4rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
 `
 
 const ProductName = styled.p`
@@ -14,9 +28,14 @@ const ProductName = styled.p`
   font-weight: 700;
 `
 
-const ProductPrice = styled.p``
+const ProductPrice = styled.p`
+  font-weight: 700;
+`
 
-const ProductInfo = styled.div``
+const ProductInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const IterationComponent = styled.div`
   display: flex;
@@ -26,12 +45,13 @@ const IterationComponent = styled.div`
   font-weight: 700;
   text-transform: uppercase;
   min-width: 122px;
+  justify-content: end;
 `
 const IterationButton = styled.button`
   -webkit-appearance: none;
   background-color: var(--iterationBG);
   font-size: 0.8125rem;
-  padding: 0.85em;
+  padding: 0.75em;
   border: 0.075em solid var(--iterationBG);
   cursor: pointer;
   color: #00000080;
@@ -43,10 +63,10 @@ const IterationButton = styled.button`
 `
 
 const IterationQuantity = styled.span`
-  padding: 0.85em 0;
+  padding: 0.75em 0;
   background-color: var(--iterationBG);
   border: 0.075em solid var(--iterationBG);
-  width: 45px;
+  width: 32px;
   display: inline-block;
   text-align: center;
 `
@@ -68,8 +88,13 @@ export default function CartItem(product) {
   return (
     <CartItemContainer>
       <ProductInfo>
-        <ProductName>{productName}</ProductName>
-        <ProductPrice>{price}</ProductPrice>
+        <CartImage>
+          <GatsbyImage image={getImage(product.cartImage.asset)} alt="" />
+        </CartImage>
+        <div>
+          <ProductName>{productName}</ProductName>
+          <ProductPrice>{price}</ProductPrice>
+        </div>
       </ProductInfo>
       <IterationComponent>
         <IterationButton onClick={() => decreaseHandler(product)}>

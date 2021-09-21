@@ -45,6 +45,11 @@ exports.createPages = async ({ graphql, actions }) => {
             slug {
               current
             }
+            cartImage {
+              asset {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }

@@ -13,6 +13,16 @@ const CartContainer = styled.div`
   border-radius: 0.5rem;
   overflow: scroll;
   max-height: 75vh;
+  max-width: 377px;
+  flex-grow: 1;
+
+  @media (min-width: 600px) {
+    margin: 1.5rem 2.5rem 0 2.5rem;
+  }
+
+  @media (min-width: 1000px) {
+    margin: 2rem 0 0 0;
+  }
 `
 const CartHeader = styled.div`
   display: flex;
@@ -20,10 +30,15 @@ const CartHeader = styled.div`
   align-items: baseline;
 `
 
+const CartBody = styled.div`
+  margin-top: 2rem;
+`
+
 const CartFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
 `
 
 const TotalTitle = styled.p``
@@ -33,11 +48,14 @@ const Total = styled.h6``
 const RemoveLink = styled.p`
   text-decoration: underline;
   font-weight: 700;
+  cursor: pointer;
 `
 
 const TotalItems = styled.h6``
 
-const ButtonFlex = styled.div``
+const ButtonContainer = styled.div`
+  margin-top: 1.5rem;
+`
 
 export default function Cart() {
   const { cart, dispatch } = useContext(CartContext)
@@ -57,13 +75,15 @@ export default function Cart() {
         <TotalItems>Cart ({items})</TotalItems>
         <RemoveLink onClick={() => clearHandler()}>Remove all</RemoveLink>
       </CartHeader>
-      {cart.length > 0 ? (
-        cart.map(product => <CartItem key={product.id} {...product} />)
-      ) : (
-        <div>The cart is empty</div>
-      )}
+      <CartBody>
+        {cart.length > 0 ? (
+          cart.map(product => <CartItem key={product.id} {...product} />)
+        ) : (
+          <div>The cart is empty</div>
+        )}
+      </CartBody>
       <CartFooter>
-        <TotalTitle>Total</TotalTitle>
+        <TotalTitle>TOTAL</TotalTitle>
         <Total>
           {new Intl.NumberFormat("en-us", {
             style: "currency",
@@ -73,11 +93,11 @@ export default function Cart() {
           }).format(total)}
         </Total>
       </CartFooter>
-      <ButtonFlex>
+      <ButtonContainer>
         <Button primary strech>
           checkout
         </Button>
-      </ButtonFlex>
+      </ButtonContainer>
     </CartContainer>
   )
 }

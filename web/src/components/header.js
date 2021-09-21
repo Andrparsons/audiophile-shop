@@ -57,7 +57,7 @@ const HeaderLogoGroup = styled.div`
   }
 `
 
-const ImgContainer = styled.div`
+const ImgContainer = styled(Link)`
   display: flex;
   align-items: center;
 
@@ -125,11 +125,22 @@ const MenuOverlay = styled.div`
   z-index: 2;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   display: ${({ open }) => (open ? "block" : "none")};
+
   background-color: #00000066;
   height: 100vh;
 `
 
-const OverlayContainer = styled.div`
+const CartContainer = styled.div`
+  align-items: flex-start;
+  justify-content: end;
+  display: flex;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+`
+const OverlayContainer = styled(CartContainer)`
   background-color: var(--white);
 `
 
@@ -150,7 +161,7 @@ export default function Header() {
           <MenuBtn open={navOpen} onClick={() => setNavOpen(!navOpen)}>
             <IconMenu />
           </MenuBtn>
-          <ImgContainer>
+          <ImgContainer to="/">
             <Logo />
           </ImgContainer>
         </HeaderLogoGroup>
@@ -178,7 +189,9 @@ export default function Header() {
         </OverlayContainer>
       </MenuOverlay>
       <MenuOverlay open={cartOpen}>
-        <Cart />
+        <CartContainer>
+          <Cart />
+        </CartContainer>
       </MenuOverlay>
       <HeaderBreak />
     </HeaderContainer>

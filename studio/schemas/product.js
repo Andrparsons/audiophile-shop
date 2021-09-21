@@ -78,5 +78,10 @@ export default {
       type: "array",
       of: [{ type: "reference", to: [{ type: "product" }] }],
     },
+    {
+      name: "cartImage",
+      title: "Cart Image",
+      type: "image",
+    },
   ],
 };
