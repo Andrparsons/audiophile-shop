@@ -9,6 +9,10 @@ const CartComponent = styled.div`
   display: flex;
   align-items: center;
   margin-top: 2rem;
+
+  @media (min-width: 1000px) {
+    margin-top: 2.875rem;
+  }
 `
 
 const IterationComponent = styled.div`

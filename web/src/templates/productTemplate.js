@@ -18,6 +18,11 @@ const Product = styled.section`
   @media (min-width: 600px) {
     margin: 0 2.5rem;
   }
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+    max-width: 1100px;
+  }
 `
 
 const BackButton = styled.button`
@@ -32,6 +37,15 @@ const BackButton = styled.button`
   border: none;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1000px) {
+    margin-top: 5rem;
+    margin-bottom: 3.5rem;
+  }
 `
 
 const ProductIntro = styled.div`
@@ -56,22 +70,54 @@ const ProductIntroContent = styled.div`
   @media (min-width: 700px) {
     margin-left: 3rem;
   }
+
+  @media (min-width: 1000px) {
+    max-width: 445px;
+  }
 `
 
-const ProductFeatures = styled.div``
+const ProductFeatures = styled.div`
+  @media (min-width: 1000px) {
+    display: flex;
+  }
+`
 
 const ProductImages = styled.div`
   margin-top: 5.5rem;
+  display: grid;
+
+  @media (min-width: 600px) {
+    margin-top: 7.5rem;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-rows: repeat(2, 174px);
+    grid-template-areas:
+      "small-1 large"
+      "small-2 large";
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 1000px) {
+    margin-top: 10rem;
+    grid-template-rows: repeat(2, 280px);
+  }
 `
 
 const ProductName = styled.h2`
   @media (min-width: 600px) {
     font-size: 1.75rem;
   }
+
+  @media (min-width: 600px) {
+    font-size: 2.5rem;
+  }
 `
 
 const ProductText = styled.p`
   margin-top: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 2rem;
+  }
 `
 
 const ProductPrice = styled.p`
@@ -80,6 +126,10 @@ const ProductPrice = styled.p`
   opacity: 1;
   font-weight: 700;
   margin-top: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 2rem;
+  }
 `
 
 const FeatureTitle = styled.h3`
@@ -88,6 +138,34 @@ const FeatureTitle = styled.h3`
 
 const FeatureCol = styled.div`
   margin-top: 5.5rem;
+
+  @media (min-width: 600px) {
+    margin-top: 7.5rem;
+  }
+
+  @media (min-width: 600px) {
+    margin-top: 10rem;
+  }
+`
+
+const ProductFeatureContainer = styled.div`
+  @media (min-width: 1000px) {
+    max-width: 635px;
+  }
+`
+
+const IncludedItemContainer = styled.div`
+  display: grid;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1000px) {
+    display: block;
+    max-width: 350px;
+    margin-left: 7.5rem;
+  }
 `
 
 const IncludedItems = styled.ul`
@@ -110,6 +188,7 @@ const IncludedItemQuantity = styled.p`
   width: 2.5rem;
   color: var(--highlight);
   opacity: 1;
+  font-weight: 700;
 `
 
 const IncludedItemName = styled.p`
@@ -206,22 +285,26 @@ export default function ProductTemplate({ pageContext: { product } }) {
         </ProductIntro>
         <ProductFeatures>
           <FeatureCol>
-            <FeatureTitle>Features</FeatureTitle>
-            <ProductText>{product.features[0].children[0].text}</ProductText>
-            <ProductText>{product.features[1].children[0].text}</ProductText>
+            <ProductFeatureContainer>
+              <FeatureTitle>Features</FeatureTitle>
+              <ProductText>{product.features[0].children[0].text}</ProductText>
+              <ProductText>{product.features[1].children[0].text}</ProductText>
+            </ProductFeatureContainer>
           </FeatureCol>
           <FeatureCol>
-            <FeatureTitle>In the box</FeatureTitle>
-            <IncludedItems>
-              {product.includes.map(include => (
-                <IncludedItem key={include._key}>
-                  <IncludedItemQuantity>
-                    {include.quantity}x
-                  </IncludedItemQuantity>
-                  <IncludedItemName>{include.item}</IncludedItemName>
-                </IncludedItem>
-              ))}
-            </IncludedItems>
+            <IncludedItemContainer>
+              <FeatureTitle>In the box</FeatureTitle>
+              <IncludedItems>
+                {product.includes.map(include => (
+                  <IncludedItem key={include._key}>
+                    <IncludedItemQuantity>
+                      {include.quantity}x
+                    </IncludedItemQuantity>
+                    <IncludedItemName>{include.item}</IncludedItemName>
+                  </IncludedItem>
+                ))}
+              </IncludedItems>
+            </IncludedItemContainer>
           </FeatureCol>
         </ProductFeatures>
         <ProductImages>
