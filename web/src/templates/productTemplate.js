@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ShopNav from "../components/shopNav"
 import NewProduct from "../components/newProductline"
+import Button from "../components/button"
 
 import PageCart from "../components/pageCart"
 
@@ -195,6 +196,18 @@ const IncludedItemName = styled.p`
   display: inline-block;
 `
 
+const RelatedItems = styled.div`
+  margin-top: 7.5rem;
+`
+const RelatedItem = styled.div`
+  text-align: center;
+`
+
+const RelatedTitle = styled.h3`
+  font-size: 1.5rem;
+  text-align: center;
+`
+
 export default function ProductTemplate({ pageContext: { product } }) {
   const price = new Intl.NumberFormat("en-us", {
     style: "currency",
@@ -255,6 +268,8 @@ export default function ProductTemplate({ pageContext: { product } }) {
       image: getImage(thirdTablet.asset),
     },
   ])
+
+  console.log(product)
 
   return (
     <Layout>
@@ -324,6 +339,31 @@ export default function ProductTemplate({ pageContext: { product } }) {
             className="art-direction-template-third"
           />
         </ProductImages>
+        <RelatedItems>
+          <RelatedTitle>you may also like</RelatedTitle>
+          {product.others.map(other => (
+            <RelatedItem key={other._id}>
+              <GatsbyImage
+                image={withArtDirection(getImage(other.otherImage[0].asset), [
+                  {
+                    media: "(min-width: 1000px)",
+                    image: getImage(other.otherImage[2].asset),
+                  },
+                  {
+                    media: "(min-width: 600px",
+                    image: getImage(other.otherImage[1].asset),
+                  },
+                ])}
+                alt="Other Related Products"
+                className="art-direction-template-others"
+              />
+              <RelatedTitle>{other.productName}</RelatedTitle>
+              <Link to={`/product/${other.slug.current}/`}>
+                <Button primary>see product</Button>
+              </Link>
+            </RelatedItem>
+          ))}
+        </RelatedItems>
       </Product>
       <ShopNav />
     </Layout>

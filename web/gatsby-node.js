@@ -50,6 +50,20 @@ exports.createPages = async ({ graphql, actions }) => {
                 gatsbyImageData(placeholder: BLURRED)
               }
             }
+            others {
+              productName
+              _id
+              slug {
+                current
+              }
+              otherImage {
+                size
+                alt
+                asset {
+                  gatsbyImageData(placeholder: BLURRED)
+                }
+              }
+            }
           }
         }
       }
