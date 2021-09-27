@@ -198,14 +198,30 @@ const IncludedItemName = styled.p`
 
 const RelatedItems = styled.div`
   margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
 `
 const RelatedItem = styled.div`
   text-align: center;
+  margin-top: 3.5rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+`
+
+const RelatedItemGroup = styled.div`
+  margin-top: 2.5rem;
 `
 
 const RelatedTitle = styled.h3`
   font-size: 1.5rem;
   text-align: center;
+  margin: 0;
+`
+
+const RelatedItemTitle = styled(RelatedTitle)`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 `
 
 export default function ProductTemplate({ pageContext: { product } }) {
@@ -341,28 +357,30 @@ export default function ProductTemplate({ pageContext: { product } }) {
         </ProductImages>
         <RelatedItems>
           <RelatedTitle>you may also like</RelatedTitle>
-          {product.others.map(other => (
-            <RelatedItem key={other._id}>
-              <GatsbyImage
-                image={withArtDirection(getImage(other.otherImage[0].asset), [
-                  {
-                    media: "(min-width: 1000px)",
-                    image: getImage(other.otherImage[2].asset),
-                  },
-                  {
-                    media: "(min-width: 600px",
-                    image: getImage(other.otherImage[1].asset),
-                  },
-                ])}
-                alt="Other Related Products"
-                className="art-direction-template-others"
-              />
-              <RelatedTitle>{other.productName}</RelatedTitle>
-              <Link to={`/product/${other.slug.current}/`}>
-                <Button primary>see product</Button>
-              </Link>
-            </RelatedItem>
-          ))}
+          <RelatedItemGroup>
+            {product.others.map(other => (
+              <RelatedItem key={other._id}>
+                <GatsbyImage
+                  image={withArtDirection(getImage(other.otherImage[0].asset), [
+                    {
+                      media: "(min-width: 1000px)",
+                      image: getImage(other.otherImage[2].asset),
+                    },
+                    {
+                      media: "(min-width: 600px",
+                      image: getImage(other.otherImage[1].asset),
+                    },
+                  ])}
+                  alt="Other Related Products"
+                  className="art-direction-template-others"
+                />
+                <RelatedItemTitle>{other.productName}</RelatedItemTitle>
+                <Link to={`/product/${other.slug.current}/`}>
+                  <Button primary>see product</Button>
+                </Link>
+              </RelatedItem>
+            ))}
+          </RelatedItemGroup>
         </RelatedItems>
       </Product>
       <ShopNav />
