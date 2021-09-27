@@ -199,6 +199,11 @@ const IncludedItemName = styled.p`
 const RelatedItems = styled.div`
   margin-top: 7.5rem;
   margin-bottom: 7.5rem;
+
+  @media (min-width: 1000px) {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+  }
 `
 const RelatedItem = styled.div`
   text-align: center;
@@ -207,10 +212,28 @@ const RelatedItem = styled.div`
   &:first-of-type {
     margin-top: 0;
   }
+
+  @media (min-width: 600px) {
+    margin-top: 0;
+    margin-right: 0.625rem;
+    max-width: 350px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 `
 
 const RelatedItemGroup = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 2.5rem;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    margin-top: 3.5rem;
+    justify-content: space-between;
+  }
 `
 
 const RelatedTitle = styled.h3`
@@ -222,6 +245,12 @@ const RelatedTitle = styled.h3`
 const RelatedItemTitle = styled(RelatedTitle)`
   margin-top: 2rem;
   margin-bottom: 2rem;
+  max-height: 27px;
+  overflow: hidden;
+
+  @media (min-width: 600px) {
+    margin-top: 2.5rem;
+  }
 `
 
 export default function ProductTemplate({ pageContext: { product } }) {

@@ -33,6 +33,10 @@
   .art-direction-template-third {
     grid-area: large;
   }
+
+  .art-direction-template-others {
+    height: 318px;
+  }
 }
 
 @media (min-width: 1000px) {
