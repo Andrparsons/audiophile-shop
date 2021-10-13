@@ -117,6 +117,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    background-color: var(--closeWhite);
   }
 
   p {
@@ -133,14 +134,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-export default function Layout({ children }) {
+export default function Layout({ children, noAbout }) {
   return (
     <>
       <CartProvider>
         <GlobalStyle />
         <Header />
         <main>{children}</main>
-        <About />
+        {noAbout ? null : <About />}
         <Footer />
       </CartProvider>
     </>

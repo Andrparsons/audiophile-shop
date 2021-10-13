@@ -97,13 +97,19 @@ export default function CartItem(product) {
         </div>
       </ProductInfo>
       <IterationComponent>
-        <IterationButton onClick={() => decreaseHandler(product)}>
-          -
-        </IterationButton>
-        <IterationQuantity>{product.quantity}</IterationQuantity>
-        <IterationButton onClick={() => increaseHandler(product)}>
-          +
-        </IterationButton>
+        {product.totalOnly ? (
+          <p>{product.quantity}x</p>
+        ) : (
+          <>
+            <IterationButton onClick={() => decreaseHandler(product)}>
+              -
+            </IterationButton>
+            <IterationQuantity>{product.quantity}</IterationQuantity>
+            <IterationButton onClick={() => increaseHandler(product)}>
+              +
+            </IterationButton>
+          </>
+        )}
       </IterationComponent>
     </CartItemContainer>
   )

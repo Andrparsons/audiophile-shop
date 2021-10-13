@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import { CartContext } from "../context/cartContext"
 import { clearCart } from "../context/cartReducer"
@@ -24,6 +25,7 @@ const CartContainer = styled.div`
     margin: 2rem 0 0 0;
   }
 `
+
 const CartHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -94,9 +96,11 @@ export default function Cart() {
         </Total>
       </CartFooter>
       <ButtonContainer>
-        <Button primary strech>
-          checkout
-        </Button>
+        <Link to="/checkout">
+          <Button primary strech>
+            checkout
+          </Button>
+        </Link>
       </ButtonContainer>
     </CartContainer>
   )
