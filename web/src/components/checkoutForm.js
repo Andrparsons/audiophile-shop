@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { navigate } from "gatsby"
+import Summary from "./checkoutSummary"
 
 const BackButton = styled.button`
   font-family: "Manrope", sans-serif;
@@ -21,19 +22,46 @@ const BackButton = styled.button`
 
   @media (min-width: 1000px) {
     margin-top: 5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
 `
 
-const CheckoutContainer = styled.section`
+const CheckoutContainer = styled.div`
   margin-right: 1.5rem;
   margin-left: 1.5rem;
+
+  @media (min-width: 600px) {
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+  }
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+    max-width: 1100px;
+  }
 `
 
 const CheckoutFormContainer = styled.form`
   padding: 1.5rem;
   background-color: var(--white);
   border-radius: 0.5rem;
+
+  @media (min-width: 600px) {
+    padding: 1.75rem;
+  }
+
+  @media (min-width: 1000px) {
+    max-width: 730px;
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
+`
+
+const CheckoutFlexContainer = styled.div`
+  @media (min-width: 1000px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `
 
 const CheckoutFormTitle = styled.h2``
@@ -47,9 +75,20 @@ const CheckoutFormSubTitle = styled.h6`
   color: var(--highlight);
   text-transform: uppercase;
   margin-bottom: 1rem;
+
+  @media (min-width: 600px) {
+    margin-bottom: 0;
+  }
 `
 
-const InputGroup = styled.div``
+const InputGroup = styled.div`
+  display: grid;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+`
 
 const CheckoutFormLabel = styled.label`
   display: flex;
@@ -59,6 +98,21 @@ const CheckoutFormLabel = styled.label`
   &:first-of-type {
     margin-top: 0;
   }
+
+  @media (min-width: 600px) {
+    &:first-of-type {
+      margin-top: 1.5rem;
+    }
+  }
+
+  ${props =>
+    props.full &&
+    `
+    @media(min-width: 600px) {
+      grid-column: 1 / span 2;
+    }
+
+  `}
 `
 
 const LabelText = styled.p`
@@ -81,8 +135,12 @@ const CheckoutFormInput = styled.input`
 `
 
 const PaymentMethodGroup = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+
+  @media (min-width: 600px) {
+    margin-top: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const RadioIcon = styled.span`
@@ -140,6 +198,10 @@ const RadioContainer = styled.label`
   &:hover {
     border: 1px solid var(--highlight);
   }
+
+  @media (min-width: 600px) {
+    grid-column: 2;
+  }
 `
 
 const RadioLabel = styled(LabelText)`
@@ -171,138 +233,141 @@ export default function CheckoutForm() {
       >
         Go Back
       </BackButton>
-      <CheckoutFormContainer>
-        <CheckoutFormTitle>Checkout</CheckoutFormTitle>
-        <CheckoutFormSubTitle>Billing Details</CheckoutFormSubTitle>
+      <CheckoutFlexContainer>
+        <CheckoutFormContainer>
+          <CheckoutFormTitle>Checkout</CheckoutFormTitle>
+          <CheckoutFormSubTitle>Billing Details</CheckoutFormSubTitle>
 
-        <InputGroup>
-          <CheckoutFormLabel>
-            <LabelText>Name</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={({ target }) => setName(target.value)}
-            />
-          </CheckoutFormLabel>
+          <InputGroup>
+            <CheckoutFormLabel>
+              <LabelText>Name</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={({ target }) => setName(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>Email Address</LabelText>
-            <CheckoutFormInput
-              type="email"
-              placeholder="example@example.com"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-            />
-          </CheckoutFormLabel>
+            <CheckoutFormLabel>
+              <LabelText>Email Address</LabelText>
+              <CheckoutFormInput
+                type="email"
+                placeholder="example@example.com"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>Phone Number</LabelText>
-            <CheckoutFormInput
-              type="tel"
-              placeholder="+1 123-456-7890"
-              value={phone}
-              onChange={({ target }) => setPhone(target.value)}
-            />
-          </CheckoutFormLabel>
-        </InputGroup>
+            <CheckoutFormLabel>
+              <LabelText>Phone Number</LabelText>
+              <CheckoutFormInput
+                type="tel"
+                placeholder="+1 123-456-7890"
+                value={phone}
+                onChange={({ target }) => setPhone(target.value)}
+              />
+            </CheckoutFormLabel>
+          </InputGroup>
 
-        <CheckoutFormSubTitle>Shipping Info</CheckoutFormSubTitle>
+          <CheckoutFormSubTitle>Shipping Info</CheckoutFormSubTitle>
 
-        <InputGroup>
-          <CheckoutFormLabel>
-            <LabelText>Address</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="Address"
-              value={address}
-              onChange={({ target }) => setAddress(target.value)}
-            />
-          </CheckoutFormLabel>
+          <InputGroup>
+            <CheckoutFormLabel full>
+              <LabelText>Address</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="Address"
+                value={address}
+                onChange={({ target }) => setAddress(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>ZIP Code</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="ZIP Code"
-              value={zip}
-              onChange={({ target }) => setZip(target.value)}
-            />
-          </CheckoutFormLabel>
+            <CheckoutFormLabel>
+              <LabelText>ZIP Code</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="ZIP Code"
+                value={zip}
+                onChange={({ target }) => setZip(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>City</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="City"
-              value={city}
-              onChange={({ target }) => setCity(target.value)}
-            />
-          </CheckoutFormLabel>
+            <CheckoutFormLabel>
+              <LabelText>City</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="City"
+                value={city}
+                onChange={({ target }) => setCity(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>Country</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="Country"
-              value={country}
-              onChange={({ target }) => setCountry(target.value)}
-            />
-          </CheckoutFormLabel>
-        </InputGroup>
+            <CheckoutFormLabel>
+              <LabelText>Country</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="Country"
+                value={country}
+                onChange={({ target }) => setCountry(target.value)}
+              />
+            </CheckoutFormLabel>
+          </InputGroup>
 
-        <CheckoutFormSubTitle>Payment Details</CheckoutFormSubTitle>
+          <CheckoutFormSubTitle>Payment Details</CheckoutFormSubTitle>
 
-        <PaymentMethodGroup>
-          <LabelText>Payment Method</LabelText>
+          <PaymentMethodGroup>
+            <LabelText>Payment Method</LabelText>
 
-          <RadioContainer>
-            <RadioLabel>e-Money</RadioLabel>
-            <RadioInput
-              type="radio"
-              name="payment"
-              value="eMoney"
-              onChange={e => handleRadioChange(e)}
-              checked={radioOption === "eMoney"}
-            />
-            <RadioIcon />
-          </RadioContainer>
+            <RadioContainer>
+              <RadioLabel>e-Money</RadioLabel>
+              <RadioInput
+                type="radio"
+                name="payment"
+                value="eMoney"
+                onChange={e => handleRadioChange(e)}
+                checked={radioOption === "eMoney"}
+              />
+              <RadioIcon />
+            </RadioContainer>
 
-          <RadioContainer>
-            <RadioLabel>Cash on Delivery</RadioLabel>
-            <RadioInput
-              type="radio"
-              name="payment"
-              value="COD"
-              onChange={e => handleRadioChange(e)}
-              checked={radioOption === "COD"}
-            />
-            <RadioIcon />
-          </RadioContainer>
-        </PaymentMethodGroup>
+            <RadioContainer>
+              <RadioLabel>Cash on Delivery</RadioLabel>
+              <RadioInput
+                type="radio"
+                name="payment"
+                value="COD"
+                onChange={e => handleRadioChange(e)}
+                checked={radioOption === "COD"}
+              />
+              <RadioIcon />
+            </RadioContainer>
+          </PaymentMethodGroup>
 
-        <InputGroup>
-          <CheckoutFormLabel>
-            <LabelText>e-Money Number</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="e-Money Number"
-              value={moneyNum}
-              onChange={({ target }) => setMoneyNum(target.value)}
-            />
-          </CheckoutFormLabel>
+          <InputGroup>
+            <CheckoutFormLabel>
+              <LabelText>e-Money Number</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="e-Money Number"
+                value={moneyNum}
+                onChange={({ target }) => setMoneyNum(target.value)}
+              />
+            </CheckoutFormLabel>
 
-          <CheckoutFormLabel>
-            <LabelText>e-Money PIN</LabelText>
-            <CheckoutFormInput
-              type="text"
-              placeholder="PIN"
-              value={moneyPin}
-              onChange={({ target }) => setMoneyPin(target.value)}
-            />
-          </CheckoutFormLabel>
-        </InputGroup>
-      </CheckoutFormContainer>
+            <CheckoutFormLabel>
+              <LabelText>e-Money PIN</LabelText>
+              <CheckoutFormInput
+                type="text"
+                placeholder="PIN"
+                value={moneyPin}
+                onChange={({ target }) => setMoneyPin(target.value)}
+              />
+            </CheckoutFormLabel>
+          </InputGroup>
+        </CheckoutFormContainer>
+        <Summary />
+      </CheckoutFlexContainer>
     </CheckoutContainer>
   )
 }

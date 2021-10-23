@@ -10,7 +10,6 @@ export default function Checkout() {
     <Layout noAbout>
       <Seo title="Checkout" />
       <CheckoutForm />
-      <Summary />
     </Layout>
   )
 }

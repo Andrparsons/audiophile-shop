@@ -30,6 +30,7 @@ const ProductName = styled.p`
 
 const ProductPrice = styled.p`
   font-weight: 700;
+  text-transform: lowercase;
 `
 
 const ProductInfo = styled.div`
@@ -98,7 +99,7 @@ export default function CartItem(product) {
       </ProductInfo>
       <IterationComponent>
         {product.totalOnly ? (
-          <p>{product.quantity}x</p>
+          <ProductPrice>x{product.quantity}</ProductPrice>
         ) : (
           <>
             <IterationButton onClick={() => decreaseHandler(product)}>
