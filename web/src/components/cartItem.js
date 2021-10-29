@@ -84,8 +84,6 @@ export default function CartItem(product) {
     maximumFractionDigits: 0,
   }).format(product.price)
 
-  const productName = "" || product.productName.split(" ")[0]
-
   return (
     <CartItemContainer>
       <ProductInfo>
@@ -93,7 +91,7 @@ export default function CartItem(product) {
           <GatsbyImage image={getImage(product.cartImage.asset)} alt="" />
         </CartImage>
         <div>
-          <ProductName>{productName}</ProductName>
+          <ProductName>{product.productName.split(" ")[0]}</ProductName>
           <ProductPrice>{price}</ProductPrice>
         </div>
       </ProductInfo>

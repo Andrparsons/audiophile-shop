@@ -23,7 +23,7 @@ export default function Confirm() {
     <section>
       <h1>Thank you for your order</h1>
       <p>You will receive an email confirmation shortly.</p>
-      <CartItem {...cart[0]} totalOnly />
+      {cart.length > 0 ? <CartItem {...cart[0]} totalOnly /> : null}
       <p>and {items - 1} other item(s)</p>
       <h2>Grand Total {grandTotal}</h2>
       <Button>back to home</Button>

@@ -68,6 +68,8 @@ export default function Summary(props) {
     { total: 0, vat: 0, grandTotal: 0 }
   )
 
+  console.log(cart.length)
+
   return (
     <CartContainer>
       <SummaryTitle>summary</SummaryTitle>
