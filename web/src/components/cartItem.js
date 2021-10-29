@@ -84,7 +84,7 @@ export default function CartItem(product) {
     maximumFractionDigits: 0,
   }).format(product.price)
 
-  const productName = product.productName.split(" ")[0]
+  const productName = "" || product.productName.split(" ")[0]
 
   return (
     <CartItemContainer>
