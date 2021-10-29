@@ -148,11 +148,11 @@ export default function Header() {
   const [navOpen, setNavOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
 
-  useEffect(() => {
-    navOpen || cartOpen
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "unset")
-  }, [navOpen, cartOpen])
+  // useEffect(() => {
+  //   navOpen || cartOpen
+  //     ? (document.body.style.overflow = "hidden")
+  //     : (document.body.style.overflow = "unset")
+  // }, [navOpen, cartOpen])
 
   return (
     <HeaderContainer>

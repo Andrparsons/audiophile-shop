@@ -57,7 +57,7 @@ const ButtonContainer = styled.div`
   margin-top: 2rem;
 `
 
-export default function Summary() {
+export default function Summary(props) {
   const { cart } = useContext(CartContext)
   const { total, vat, grandTotal } = cart.reduce(
     ({ total, vat, grandTotal }, { price, quantity }) => ({
@@ -127,7 +127,7 @@ export default function Summary() {
         </SummaryTotal>
       </SummaryBody>
       <ButtonContainer>
-        <Button primary strech>
+        <Button primary strech onClick={props.handlePay}>
           continue & pay
         </Button>
       </ButtonContainer>

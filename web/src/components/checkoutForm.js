@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { navigate } from "gatsby"
 import Summary from "./checkoutSummary"
+import Confirm from "./payConfirm"
 
 const BackButton = styled.button`
   font-family: "Manrope", sans-serif;
@@ -208,6 +209,18 @@ const RadioLabel = styled(LabelText)`
   margin-bottom: 0;
 `
 
+const MenuOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  display: ${({ open }) => (open ? "block" : "none")};
+
+  background-color: #00000066;
+  height: 100vh;
+  inset: 0;
+`
+
 export default function CheckoutForm() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -224,8 +237,21 @@ export default function CheckoutForm() {
     setRadioOption(e.target.value)
   }
 
+  const [overlay, setOverlay] = useState(false)
+
+  useEffect(() => {
+    overlay
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset")
+  }, [overlay])
+
+  const handlePay = () => setOverlay(true)
+
   return (
     <CheckoutContainer>
+      <MenuOverlay open={overlay}>
+        <Confirm />
+      </MenuOverlay>
       <BackButton
         onClick={() => {
           navigate(-1)
@@ -366,7 +392,7 @@ export default function CheckoutForm() {
             </CheckoutFormLabel>
           </InputGroup>
         </CheckoutFormContainer>
-        <Summary />
+        <Summary handlePay={handlePay} />
       </CheckoutFlexContainer>
     </CheckoutContainer>
   )
