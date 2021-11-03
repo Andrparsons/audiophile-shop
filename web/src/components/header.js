@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
+import { ConfirmContext } from "../context/confirmContext"
 import ShopNav from "./shopNav"
 import Cart from "./cart"
+import Confirm from "./payConfirm"
 import Logo from "../images/shared/svgs/logo.svg"
 import IconMenu from "../images/shared/svgs/icon-hamburger.svg"
 import IconCart from "../images/shared/svgs/icon-cart.svg"
@@ -22,6 +24,7 @@ const HeaderFlex = styled.div`
   justify-content: space-between;
   margin: 0 1.5rem;
   padding: 2rem 0;
+  z-index: 3;
 
   @media (min-width: 600px) {
     margin: 0 2.5rem;
@@ -121,10 +124,11 @@ const HeaderBreak = styled.hr`
 
 const MenuOverlay = styled.div`
   position: absolute;
+  top: 0;
   width: 100%;
   z-index: 2;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
-  display: ${({ open }) => (open ? "block" : "none")};
+  display: ${({ open }) => (open ? "flex" : "none")};
 
   background-color: #00000066;
   height: 100vh;
@@ -134,6 +138,9 @@ const CartContainer = styled.div`
   align-items: flex-start;
   justify-content: end;
   display: flex;
+  width: 100%;
+  margin-top: 5.625rem;
+  align-self: flex-start;
 
   @media (min-width: 1000px) {
     margin: 0 auto;
@@ -147,12 +154,7 @@ const OverlayContainer = styled(CartContainer)`
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
-
-  // useEffect(() => {
-  //   navOpen || cartOpen
-  //     ? (document.body.style.overflow = "hidden")
-  //     : (document.body.style.overflow = "unset")
-  // }, [navOpen, cartOpen])
+  const [confirmOpen, setConfirmOpen] = useContext(ConfirmContext)
 
   return (
     <HeaderContainer>
@@ -192,6 +194,9 @@ export default function Header() {
         <CartContainer>
           <Cart />
         </CartContainer>
+      </MenuOverlay>
+      <MenuOverlay open={confirmOpen}>
+        <Confirm />
       </MenuOverlay>
       <HeaderBreak />
     </HeaderContainer>

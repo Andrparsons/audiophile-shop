@@ -12,7 +12,7 @@ const CartContainer = styled.div`
   padding: 2rem 1.75rem;
   background-color: var(--white);
   border-radius: 0.5rem;
-  overflow: scroll;
+  overflow: auto;
   max-height: 75vh;
   max-width: 377px;
   flex-grow: 1;

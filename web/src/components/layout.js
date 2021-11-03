@@ -8,6 +8,7 @@ import "@fontsource/manrope/500.css"
 import "@fontsource/manrope/700.css"
 
 import { CartProvider } from "../context/cartContext"
+import { ConfirmProvider } from "../context/confirmContext"
 
 import Header from "./header"
 import About from "./about"
@@ -137,13 +138,15 @@ const GlobalStyle = createGlobalStyle`
 export default function Layout({ children, noAbout }) {
   return (
     <>
-      <CartProvider>
-        <GlobalStyle />
-        <Header />
-        <main>{children}</main>
-        {noAbout ? null : <About />}
-        <Footer />
-      </CartProvider>
+      <ConfirmProvider>
+        <CartProvider>
+          <GlobalStyle />
+          <Header />
+          <main>{children}</main>
+          {noAbout ? null : <About />}
+          <Footer />
+        </CartProvider>
+      </ConfirmProvider>
     </>
   )
 }

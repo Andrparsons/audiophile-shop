@@ -45,7 +45,7 @@ const IterationComponent = styled.div`
   letter-spacing: 0.075em;
   font-weight: 700;
   text-transform: uppercase;
-  min-width: 122px;
+  /* min-width: 122px; */
   justify-content: end;
 `
 const IterationButton = styled.button`
