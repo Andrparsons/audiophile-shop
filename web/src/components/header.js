@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { useLocation } from "@reach/router"
 
 import { ConfirmContext } from "../context/confirmContext"
 import ShopNav from "./shopNav"
@@ -156,6 +157,14 @@ export default function Header() {
   const [cartOpen, setCartOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useContext(ConfirmContext)
 
+  const location = useLocation()
+
+  const handleCartOpen = () => {
+    if (location.pathname !== "/checkout") {
+      setCartOpen(!cartOpen)
+    }
+  }
+
   return (
     <HeaderContainer>
       <HeaderFlex>
@@ -181,7 +190,7 @@ export default function Header() {
             <Link to="/earphones">earphones</Link>
           </NavItem>
         </DesktopNav>
-        <HeaderBtn open={cartOpen} onClick={() => setCartOpen(!cartOpen)}>
+        <HeaderBtn open={cartOpen} onClick={handleCartOpen}>
           <IconCart />
         </HeaderBtn>
       </HeaderFlex>

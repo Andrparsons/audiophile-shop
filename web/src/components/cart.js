@@ -18,11 +18,11 @@ const CartContainer = styled.div`
   flex-grow: 1;
 
   @media (min-width: 600px) {
-    margin: 1.5rem 2.5rem 0 2.5rem;
+    margin: 7.5rem 2.5rem 0 2.5rem;
   }
 
   @media (min-width: 1000px) {
-    margin: 2rem 0 0 0;
+    margin: 8rem 0 0 0;
   }
 `
 
