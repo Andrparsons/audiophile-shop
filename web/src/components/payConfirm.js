@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
+import { navigate } from "gatsby"
 
 import { CartContext } from "../context/cartContext"
 import { clearCart } from "../context/cartReducer"
@@ -35,13 +36,40 @@ const Thanks = styled.h3`
 const ItemContainer = styled.div`
   padding: 1.5rem;
   background-color: var(--iterationBG);
+  border-radius: 0.5rem 0.5rem 0 0;
+  margin-top: 1.5rem;
 `
 
-const PriceContainer = styled.div``
+const ItemContainerSubText = styled.p`
+  text-align: center;
+  font-weight: 700;
+  border-top: 1px solid #00000080;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+`
+
+const PriceContainer = styled.div`
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  margin-bottom: 1.5rem;
+`
+
+const GrandTotalText = styled.p``
+
+const GrandTotalPrice = styled.p`
+  opacity: 1;
+`
 
 export default function Confirm() {
   const { cart, dispatch } = useContext(CartContext)
   const clearHandler = () => dispatch(clearCart())
+
+  const handleReturnHome = () => {
+    navigate("/")
+    clearHandler()
+  }
 
   const { items, grandTotal } = cart.reduce(
     ({ items, grandTotal }, { price, quantity }) => ({
@@ -60,10 +88,17 @@ export default function Confirm() {
       <p>You will receive an email confirmation shortly.</p>
       <ItemContainer>
         {cart.length > 0 ? <CartItem {...cart[0]} totalOnly confirm /> : null}
-        <p>and {items - 1} other item(s)</p>
+        <ItemContainerSubText>
+          and {items - 1} other item(s)
+        </ItemContainerSubText>
       </ItemContainer>
-      <h2>Grand Total {grandTotal}</h2>
-      <Button>back to home</Button>
+      <PriceContainer>
+        <GrandTotalText>Grand Total </GrandTotalText>
+        <GrandTotalPrice>{grandTotal}</GrandTotalPrice>
+      </PriceContainer>
+      <Button primary strech onClick={handleReturnHome}>
+        back to home
+      </Button>
     </PayConfirmation>
   )
 }
