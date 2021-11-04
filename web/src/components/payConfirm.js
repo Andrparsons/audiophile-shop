@@ -16,6 +16,13 @@ const PayConfirmation = styled.section`
   border-radius: 0.5rem;
   padding: 2rem;
   align-self: center;
+  width: 100%;
+  max-width: 540px;
+
+  @media (min-width: 600px) {
+    margin: 0 auto;
+    padding: 3rem;
+  }
 `
 const Checkmark = styled.div`
   background-color: var(--primaryBtn);
@@ -31,13 +38,22 @@ const Thanks = styled.h3`
   font-size: 1.5rem;
   line-height: 1.16;
   max-width: 280px;
+
+  @media (min-width: 600px) {
+    font-size: 2rem;
+  }
 `
 
 const ItemContainer = styled.div`
   padding: 1.5rem;
   background-color: var(--iterationBG);
   border-radius: 0.5rem 0.5rem 0 0;
-  margin-top: 1.5rem;
+
+  @media (min-width: 600px) {
+    width: 250px;
+    flex-shrink: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
 `
 
 const ItemContainerSubText = styled.p`
@@ -51,15 +67,41 @@ const ItemContainerSubText = styled.p`
 const PriceContainer = styled.div`
   background-color: var(--black);
   color: var(--white);
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
-  margin-bottom: 1.5rem;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    border-radius: 0 0.5rem 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 `
 
-const GrandTotalText = styled.p``
+const GrandTotalText = styled.p`
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.9375rem;
+`
 
 const GrandTotalPrice = styled.p`
   opacity: 1;
+  font-weight: 700;
+  font-size: 1.125rem;
+`
+
+const SummaryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
 `
 
 export default function Confirm() {
@@ -86,16 +128,25 @@ export default function Confirm() {
       </Checkmark>
       <Thanks>Thank you for your order</Thanks>
       <p>You will receive an email confirmation shortly.</p>
-      <ItemContainer>
-        {cart.length > 0 ? <CartItem {...cart[0]} totalOnly confirm /> : null}
-        <ItemContainerSubText>
-          and {items - 1} other item(s)
-        </ItemContainerSubText>
-      </ItemContainer>
-      <PriceContainer>
-        <GrandTotalText>Grand Total </GrandTotalText>
-        <GrandTotalPrice>{grandTotal}</GrandTotalPrice>
-      </PriceContainer>
+      <SummaryContainer>
+        <ItemContainer>
+          {cart.length > 0 ? <CartItem {...cart[0]} totalOnly confirm /> : null}
+          <ItemContainerSubText>
+            and {items - 1} other item(s)
+          </ItemContainerSubText>
+        </ItemContainer>
+        <PriceContainer>
+          <GrandTotalText>Grand Total </GrandTotalText>
+          <GrandTotalPrice>
+            {new Intl.NumberFormat("en-us", {
+              style: "currency",
+              currency: "USD",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }).format(grandTotal)}
+          </GrandTotalPrice>
+        </PriceContainer>
+      </SummaryContainer>
       <Button primary strech onClick={handleReturnHome}>
         back to home
       </Button>
