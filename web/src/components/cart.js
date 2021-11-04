@@ -96,11 +96,13 @@ export default function Cart() {
         </Total>
       </CartFooter>
       <ButtonContainer>
-        <Link to="/checkout">
-          <Button primary strech>
-            checkout
-          </Button>
-        </Link>
+        {total <= 0 ? null : (
+          <Link to="/checkout">
+            <Button primary strech>
+              checkout
+            </Button>
+          </Link>
+        )}
       </ButtonContainer>
     </CartContainer>
   )
